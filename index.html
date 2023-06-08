@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.10/lottie.js"></script>
+  <style>
+    #animation {
+        border: 1px solid red;
+        width:300px;
+        height:300px;
+    }
+  </style>
+</head>
+<body>
+  <div id="animation"></div>
+
+  <script>
+    // Load the Lottie animation
+    var animation = bodymovin.loadAnimation({
+      container: document.getElementById('animation'),
+      renderer: 'svg',
+      loop: false,
+      autoplay: false,
+      path: '/diffy-lottie.json' // Replace with the path to your Lottie animation JSON file
+    });
+
+    // Play the animation up to a specific timeframe
+    var startFrame = 0; // Starting frame
+    var endFrame = 50; // Ending frame
+
+    animation.goToAndPlay(startFrame, true);
+
+    animation.addEventListener('enterFrame', function() {
+      if (animation.currentFrame >= endFrame) {
+        animation.goToAndPlay(startFrame, true);
+      }
+    });
+  </script>
+</body>
+</html>
